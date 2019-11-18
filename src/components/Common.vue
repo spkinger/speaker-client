@@ -1,14 +1,16 @@
 <script>
     import Vue from 'vue'
-    import  { Alert, AlertModule, ToastPlugin, querystring, ConfirmPlugin } from 'vux'
+    import router from '../router'
+    import  { Alert, AlertModule, querystring, ToastPlugin } from 'vux'
+
     Vue.use(ToastPlugin, {position: 'middle', width: 'auto'});
-    Vue.use(ConfirmPlugin);
 
     export default {
+        name: "Common",
         components: {
             Alert,
             AlertModule,
-            ToastPlugin
+            router
         },
         data: function() {
             return {
@@ -27,23 +29,6 @@
                     content: msg
                 });
             },
-            errFunc: function(msg, confirmFunc = '', cancelFunc = '') {
-                this.$vux.confirm.show({
-                    title: '提示',
-                    content: msg,
-                    // 组件除show外的属性
-                    onCancel () {
-                        if (typeof cancelFunc === 'function') {
-                            cancelFunc();
-                        }
-                    },
-                    onConfirm () {
-                        if (typeof confirmFunc === 'function') {
-                            confirmFunc();
-                        }
-                    }
-                })
-            },
             // 存储用户登录状态
             userAuthSet: function(data) {
                 localStorage.setItem('speaker_user_auth', JSON.stringify(data))
@@ -54,8 +39,13 @@
                 if (userAuth) {
                     return JSON.parse(userAuth);
                 } else {
-                    this.$router.push({'path':'/login'});
+                    this.goToLogin();
                     return {};
+                }
+            },
+            goToLogin: function() {
+                if (router.app.$route.path !== '/login') {
+                    router.push({'path':'/login'});
                 }
             },
             apiGet: function(path, data, succFunc = '', errFunc = '', exceptFunc = '') {
@@ -83,7 +73,7 @@
                     } else {
                         // 未登录响应处理
                         if (res && res.code === 4000) {
-                            vx.$router.push({'path':'/login'});
+                            vx.goToLogin();
                         }
 
                         if (typeof errFunc === 'function') {
@@ -129,7 +119,7 @@
                     } else {
                         // 未登录响应处理
                         if (res && res.code === 4000) {
-                            vx.$router.push({'path':'/login'});
+                            this.goToLogin();
                         }
 
                         if (typeof errFunc === 'function') {

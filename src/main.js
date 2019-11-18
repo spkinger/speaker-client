@@ -5,7 +5,7 @@ import FastClick from 'fastclick'
 import App from './App'
 import router from './router/index'
 import './style/main.css'
-import SpeakerWs from "./components/webrtc/SpeakerWs";
+import SpeakerWs from "./components/webrtc/SpeakerWs"
 
 Vue.prototype.SpeakerWs = SpeakerWs;
 

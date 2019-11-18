@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/HelloFromVux'
 import Friends from '@/components/Friends'
 import Setting from '@/components/Setting'
 import Login from '@/components/Login'
