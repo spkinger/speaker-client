@@ -16,8 +16,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: Home
+      name: '首页',
+      redirect: '/friends/friends'
     },
     {
       path: '/login',
