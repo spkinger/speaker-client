@@ -187,10 +187,11 @@
         // 将本地媒体加载到RTC连接对象
         localAddMedia: async function() {
             // 获取媒体流
+            let vx = this;
             try {
                 this.localStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
                 // 将媒体流加载入对等连接对象
-                this.localStream.getTracks().forEach(track => this.pc.addTrack(track, this.localStream));
+                this.localStream.getTracks().forEach(track => vx.pc.addTrack(track, vx.localStream));
             } catch (e) {
                 console.log("get user media error", e);
                 this.speakerBack('视频捕捉失败');
