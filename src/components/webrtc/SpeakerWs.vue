@@ -366,8 +366,10 @@
         // 挂机的具体处理
         onHangUp: function() {
             console.log('hang up');
-            this.pc.close();
-            this.pc = null;
+            if (this.pc) {
+                this.pc.close();
+                this.pc = null;
+            }
 
             // 关闭本地媒体流
             if (this.localStream) {
