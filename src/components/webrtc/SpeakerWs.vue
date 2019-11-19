@@ -1,4 +1,5 @@
 <script>
+    import router from "../../router"
     import Common from "../Common";
 
     const MsgTypeSys = 1; // 客户端与服务端通信
@@ -17,7 +18,8 @@
     export default {
         name: "SpeakerWs",
         components: {
-            Common
+            Common,
+            router
         },
         ws: {},
         pc: {}, // WebRTC连接
@@ -157,7 +159,7 @@
             if (msg) {
                 Common.methods.errMsg(msg);
             }
-            this.$router.push({'path':'/friends/friends'});
+            router.push({'path':'/friends/friends'});
         },
 
         // 初始化对等连接对象
@@ -214,7 +216,7 @@
         onReceiveCall: function(targetID) {
             console.log("receive call");
             // 接收方跳转speaker页面(接收方)
-            this.$router.push({'path':'/speaker/receiver/'+targetID});
+            router.push({'path':'/speaker/receiver/'+targetID});
         },
 
         // 对方接受了呼叫
@@ -360,7 +362,7 @@
             // 本地处理
             this.onHangUp();
 
-            this.$router.push({'path':'/friends/friends'});
+            router.push({'path':'/friends/friends'});
         },
 
         // 挂机的具体处理

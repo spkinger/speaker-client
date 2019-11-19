@@ -48,7 +48,7 @@ spe
             if (this.$route.params.type === 'sender') {
                 this.speakerCtlType = 'sender';
                 this.speakerBtnStatus = 'canHangUp';
-                // await this.SpeakerWs.start(this.targetID);
+                await this.SpeakerWs.start(this.targetID);
             } else if(this.$route.params.type === 'receiver') {
                 this.speakerCtlType = 'receiver';
                 this.speakerBtnStatus = 'waitAnswer';
