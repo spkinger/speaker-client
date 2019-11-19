@@ -166,7 +166,7 @@
         // 初始化对等连接对象
         initRTC: function() {
             let vx = this;
-            let pc = new RTCPeerConnection(config.RTCConfig);
+            let pc = new RTCPeerConnection(conf.RTCConfig);
             pc.addEventListener('icecandidate', e => vx.onIceCandidate(pc, e));
             pc.addEventListener('iceconnectionstatechange', e => vx.onIceStateChange(pc, e));
             pc.addEventListener('track', vx.gotRemoteStream);
