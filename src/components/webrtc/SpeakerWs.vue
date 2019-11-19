@@ -25,10 +25,8 @@
         pc: {}, // WebRTC连接
         localStream: {}, // 本地视频流
         remoteStream: {}, // 远程视频流
-        // setLocalVideo: function(stream) {},
-        // setRemoteVideo: function(stream) {},
-        localOutPut: {},
-        remoteOutPut: {},
+        setLocalVideo: function(stream) {},
+        setRemoteVideo: function(stream) {},
         connStatus: 0, // 0未连接，1连接中，2连接成功，-1不在线
         targetID: 0,
         offerOptions: {
@@ -407,32 +405,22 @@
             //     console.log('received remote stream');
             // }
             this.remoteStream = e.streams[0];
-            // this.setRemoteVideo(this.remoteStream);
-            this.localOutPut = this.localStream;
-            this.remoteOutPut = this.remoteStream;
+            this.setRemoteVideo(this.remoteStream);
         },
 
         // 显示本地视频流
         showLocalStream: function() {
             // this.localVideo.srcObject = this.localStream;
-            // this.setLocalVideo(this.localStream);
+            this.setLocalVideo(this.localStream);
         },
 
-        getLocalOutPut: function () {
-            return this.localOutPut;
+        // 设置本地视频设置方法
+        setLocalVideoFunc: function (func) {
+            this.setLocalVideo = func;
         },
 
-        getRemoteOutPut: function () {
-            return this.remoteOutPut;
+        setRemoteVideoFunc: function (func) {
+            this.setRemoteVideo = func;
         }
-
-        // // 设置本地视频设置方法
-        // setLocalVideoFunc: function (func) {
-        //     this.setLocalVideo = func;
-        // },
-        //
-        // setRemoteVideoFunc: function (func) {
-        //     this.setRemoteVideo = func;
-        // }
     }
 </script>

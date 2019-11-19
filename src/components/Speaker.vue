@@ -44,14 +44,12 @@ spe
                 return;
             }
             this.targetID = parseInt(this.$route.params.user_id);
-            // this.SpeakerWs.setLocalVideoFunc(function (stream) {
-            //     vx.localStream = stream;
-            // });
-            // this.SpeakerWs.setRemoteVideoFunc(function (stream) {
-            //     vx.remoteStream = stream;
-            // });
-            this.localStream = this.SpeakerWs.getLocalOutPut();
-            this.remoteStream = this.SpeakerWs.getRemoteOutPut();
+            this.SpeakerWs.setLocalVideoFunc(function (stream) {
+                vx.localStream = stream;
+            });
+            this.SpeakerWs.setRemoteVideoFunc(function (stream) {
+                vx.remoteStream = stream;
+            });
 
             // 根据url参数判断显示的页面
             if (this.$route.params.type === 'sender') {
