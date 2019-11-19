@@ -47,6 +47,7 @@
             // WebSocket收到消息时的处理
             vx.ws.onmessage = function(evt) {
                 let wsData = JSON.parse(evt.data);
+                console.log(wsData);
                 vx.wsOnMsg(wsData.child_type, wsData.from, wsData.data);
             };
 
@@ -87,7 +88,7 @@
                     break;
                 case ChildTypeUserPong:
                     // 收到pong消息的处理
-                    this.onPong();
+                    this.onPong(target);
                     break;
                 case ChildTypeUserCall:
                     // 收到呼叫消息的处理
@@ -145,8 +146,8 @@
         },
 
         // 收到pong的处理
-        onPong: function() {
-            this.callStart(); // 开始呼叫对方
+        onPong: function(targetID) {
+            this.callStart(targetID); // 开始呼叫对方
         },
 
         // 呼叫对方
