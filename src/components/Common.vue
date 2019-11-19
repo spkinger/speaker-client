@@ -99,7 +99,6 @@
                 fetch(conf.serverUrl+path,{
                     body: formData,
                     method: 'POST',
-                    referrer: 'no-referrer',
                     headers: new Headers({
                         'Authorization': encodeURIComponent(JSON.stringify(vx.userAuthGet()))
                     })
