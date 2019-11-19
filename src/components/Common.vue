@@ -43,6 +43,10 @@
                     return {};
                 }
             },
+            // 删除用户登录状态
+            userAuthDel: function() {
+                localStorage.removeItem('speaker_user_auth');
+            },
             goToLogin: function() {
                 if (router.app.$route.path !== '/login') {
                     router.push({'path':'/login'});

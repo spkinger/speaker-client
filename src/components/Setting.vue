@@ -25,6 +25,7 @@
     import HeadBar from './frame/HeadBar'
     import BottomBar from './frame/BottomBar'
     import { Group, XButton, Confirm, TransferDomDirective as TransferDom } from 'vux'
+    import Common from "./Common";
 
     export default {
         name: "Setting",
@@ -51,7 +52,8 @@
                 this.showLoginOut = !this.showLoginOut;
             },
             confirmLogout: function () {
-                console.log('logout')
+                Common.methods.userAuthDel();
+                this.$router.push({'path':'/login'});
             }
         }
     }
