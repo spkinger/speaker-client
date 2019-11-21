@@ -92,7 +92,7 @@ spe
                     },
                     function (res) {
                         if (res.data) {
-                            vx.targetUser = JSON.stringify(res.data);
+                            vx.targetUser = res.data;
                             vx.showTargetUser = true;
                         }
                     }
