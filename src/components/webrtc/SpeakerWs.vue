@@ -21,10 +21,10 @@
             Common,
             router
         },
-        ws: {},
-        pc: {}, // WebRTC连接
-        localStream: {}, // 本地视频流
-        remoteStream: {}, // 远程视频流
+        ws: null,
+        pc: null, // WebRTC连接
+        localStream: null, // 本地视频流
+        remoteStream: null, // 远程视频流
         setLocalVideo: function(stream) {},
         setRemoteVideo: function(stream) {},
         connStatus: 0, // 0未连接，1连接中，2连接成功，-1不在线
