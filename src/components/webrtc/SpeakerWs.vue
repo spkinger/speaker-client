@@ -377,8 +377,6 @@
 
             // 本地处理
             this.onHangUp();
-
-            router.push({'path':'/friends/friends'});
         },
 
         // 挂机的具体处理
@@ -399,6 +397,8 @@
             // 取消视频显示
             this.localStream = null;
             this.remoteStream = null;
+
+            router.push({'path':'/friends/friends'});
         },
 
         // ice状态变化
