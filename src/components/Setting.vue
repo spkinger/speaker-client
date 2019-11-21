@@ -53,6 +53,7 @@
             },
             confirmLogout: function () {
                 Common.methods.userAuthDel();
+                this.SpeakerWs.wsClose();
                 this.$router.push({'path':'/login'});
             }
         }

@@ -70,6 +70,11 @@
             };
         },
 
+        // 关闭websocket
+        wsClose: function() {
+            this.ws.close();
+        },
+
         /**
          * 接到消息的处理
          * @param childType int 消息子类型
