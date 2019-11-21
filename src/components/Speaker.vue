@@ -62,6 +62,9 @@ spe
                 this.speakerCtlType = 'receiver';
                 this.speakerBtnStatus = 'waitAnswer';
             }
+
+            // 显示对方头像
+            this.getUserInfo(this.targetID);
         },
         methods: {
             nameAvatar: function(name, size, color) {
@@ -89,8 +92,8 @@ spe
                     },
                     function (res) {
                         if (res.data) {
-                            this.targetUser = JSON.stringify(res.data);
-                            this.showTargetUser = true;
+                            vx.targetUser = JSON.stringify(res.data);
+                            vx.showTargetUser = true;
                         }
                     }
                 );
@@ -119,17 +122,14 @@ spe
         margin-top: -69px;
         margin-left: -69px;
     }
-
     .target_user_fadein {
         opacity: 0;
         -webkit-animation: user_fadein 2s linear forwards;
         animation: user_fadein 2s linear forwards;
     }
-
     @-webkit-keyframes user_fadein {
         100% { opacity: 1; }
     }
-
     @keyframes user_fadein {
         100% { opacity: 1; }
     }
