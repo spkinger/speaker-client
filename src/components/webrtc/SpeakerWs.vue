@@ -37,6 +37,17 @@
         // 初始化WebSocket
         initWs: function () {
             let vx = this;
+            let user = this.getSelf();
+
+            // 未登录时不连接websocket
+            if (!user.id) {
+                return;
+            }
+            // 已存在连接，先进性关闭
+            if (vx.ws) {
+                vx.ws.close();
+            }
+
             vx.ws = new WebSocket(conf.wssUrl);
 
             // WebSocket连上时的处理
@@ -166,12 +177,13 @@
         },
 
         // 初始化对等连接对象
-        initRTC: function() {
+        initRTC: function(targetID) {
+            this.targetID = parseInt(targetID);
             let vx = this;
             vx.pc = new RTCPeerConnection(conf.RTCConfig);
             vx.pc.addEventListener('icecandidate', e => vx.onIceCandidate(vx.pc, e));
             vx.pc.addEventListener('iceconnectionstatechange', e => vx.onIceStateChange(vx.pc, e));
-            vx.pc.addEventListener('track', vx.gotRemoteStream);
+            vx.pc.addEventListener('track', e => vx.gotRemoteStream(e));
             console.log('created RTC connection');
         },
 
@@ -203,7 +215,7 @@
         // 接受呼叫
         callAccess: async function(targetID) {
             // 初始化对等连接对象
-            this.initRTC();
+            this.initRTC(targetID);
             // 挂载本地媒体
             await this.localAddMedia();
             // 发送接受呼叫状态给对方
@@ -226,7 +238,7 @@
         // 对方接受了呼叫
         onReceiveCallAccess: async function(targetID) {
             // 初始化对等连接对象
-            this.initRTC();
+            this.initRTC(targetID);
             // 需要先挂载本地媒体，才能发送给对方
             await this.localAddMedia();
             // 创建offer，开始进行对等连接协调

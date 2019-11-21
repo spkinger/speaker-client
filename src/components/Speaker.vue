@@ -75,6 +75,7 @@ spe
             },
             // 接听视频通话
             callAccess: async function () {
+                this.speakerBtnStatus = 'canHangUp';
                 await this.SpeakerWs.callAccess(this.targetID);
             }
         }

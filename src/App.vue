@@ -8,7 +8,7 @@
 export default {
     name: 'app',
     created() {
-        this.SpeakerWs.initWs()
+        this.SpeakerWs.initWs();
     }
 }
 </script>

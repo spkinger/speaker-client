@@ -73,6 +73,7 @@
                             // 登录成功
                             Common.methods.succMsg(res.msg);
                             Common.methods.userAuthSet(res.data);
+                            vx.SpeakerWs.initWs(); // 有登录态后开启websocket连接
                             vx.$router.push({'path':'/friends/friends'});
                         } else {
                             Common.methods.errMsg('登录失败');

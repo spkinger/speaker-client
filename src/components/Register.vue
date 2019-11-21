@@ -119,6 +119,7 @@
                             // 注册成功
                             Common.methods.succMsg(res.msg);
                             Common.methods.userAuthSet(res.data);
+                            vx.SpeakerWs.initWs(); // 注册成功时会有登录态，此时开启websocket连接
                             vx.$router.push({'path':'/friends/friends'});
                         } else {
                             Common.methods.errMsg('登录失败');
