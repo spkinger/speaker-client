@@ -1,12 +1,12 @@
 <template>
     <div style="width:100%;height:100%;">
         <div class="waiting_box">
-            <div class="target_user">
+            <div v-if="showTargetUser" class="target_user target_user_fadein">
                 <img slot="icon"
-                     :src="nameAvatar('spkinger', 46, '')"
+                     :src="nameAvatar(targetUser.nick_name, 46, '')"
                      alt=""
                      class="target_avatar"/>
-                <div class="target_name">spkinger</div>
+                <div class="target_name">{{ targetUser.nick_name }}</div>
             </div>
             <video class="remote_video" :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
             <video class="local_video" :src-object.prop.camel="localStream" playsinline autoplay muted></video>
@@ -36,6 +36,8 @@ spe
                 localStream: {},
                 remoteStream: {},
                 targetID: 0,
+                targetUser: null,
+                showTargetUser: false
             };
         },
         created: async function() {
@@ -77,6 +79,21 @@ spe
             callAccess: async function () {
                 this.speakerBtnStatus = 'canHangUp';
                 await this.SpeakerWs.callAccess(this.targetID);
+            },
+            getUserInfo: function (userId) {
+                let vx = this;
+                Common.methods.apiGet(
+                    '/user/detail',
+                    {
+                        user_id: userId
+                    },
+                    function (res) {
+                        if (res.data) {
+                            this.targetUser = JSON.stringify(res.data);
+                            this.showTargetUser = true;
+                        }
+                    }
+                );
             }
         }
     }
@@ -101,6 +118,20 @@ spe
         left: 50%;
         margin-top: -69px;
         margin-left: -69px;
+    }
+
+    .target_user_fadein {
+        opacity: 0;
+        -webkit-animation: user_fadein 2s linear forwards;
+        animation: user_fadein 2s linear forwards;
+    }
+
+    @-webkit-keyframes user_fadein {
+        100% { opacity: 1; }
+    }
+
+    @keyframes user_fadein {
+        100% { opacity: 1; }
     }
     .target_avatar {
         border-radius: 50%;
