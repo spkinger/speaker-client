@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 100%; height: 100%;">
         <HeadBar title="好友列表"></HeadBar>
         <div style="width: 100%; height: 90px;"></div>
         <tab style="width: 100%; position: fixed; left: 0px; top: 46px; z-index: 100;">
@@ -416,7 +416,8 @@
                         if (res.data) {
                             // 请求成功
                             Common.methods.succMsg(res.msg);
-                            vx.changeShowList('friends')
+                            vx.changeShowList('friends');
+                            vx.mescroll.triggerDownScroll();
                         } else {
                             Common.methods.errMsg('请求失败');
                         }
@@ -426,3 +427,23 @@
         }
     }
 </script>
+<style scoped>
+    #friend_list {
+        width: 100%;
+        width: -webkit-calc(100% - 143px);
+        width: -moz-calc(100% - 143px);
+        width: calc(100% - 143px);
+    }
+    #request_list {
+        width: 100%;
+        width: -webkit-calc(100% - 193px);
+        width: -moz-calc(100% - 193px);
+        width: calc(100% - 193px);
+    }
+    #got_list {
+        width: 100%;
+        width: -webkit-calc(100% - 193px);
+        width: -moz-calc(100% - 193px);
+        width: calc(100% - 193px);
+    }
+</style>

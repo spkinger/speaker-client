@@ -412,25 +412,21 @@
         // 收到远程数据流，进行显示
         gotRemoteStream: function(e) {
             console.log("got stream");
-            // if (this.remoteStream.srcObject !== e.streams[0]) {
-            //     this.remoteStream.srcObject = e.streams[0];
-            //     console.log('received remote stream');
-            // }
             this.remoteStream = e.streams[0];
             this.setRemoteVideo(this.remoteStream);
         },
 
         // 显示本地视频流
         showLocalStream: function() {
-            // this.localVideo.srcObject = this.localStream;
             this.setLocalVideo(this.localStream);
         },
 
-        // 设置本地视频设置方法
+        // 设置本地视频回调方法
         setLocalVideoFunc: function (func) {
             this.setLocalVideo = func;
         },
 
+        // 设置远程视频回调方法
         setRemoteVideoFunc: function (func) {
             this.setRemoteVideo = func;
         }
