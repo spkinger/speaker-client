@@ -429,21 +429,21 @@
 </script>
 <style scoped>
     #friend_list {
-        width: 100%;
-        width: -webkit-calc(100% - 143px);
-        width: -moz-calc(100% - 143px);
-        width: calc(100% - 143px);
+        height: 100%;
+        height: -webkit-calc(100% - 143px);
+        height: -moz-calc(100% - 143px);
+        height: calc(100% - 143px);
     }
     #request_list {
-        width: 100%;
-        width: -webkit-calc(100% - 193px);
-        width: -moz-calc(100% - 193px);
-        width: calc(100% - 193px);
+        height: 100%;
+        height: -webkit-calc(100% - 193px);
+        height: -moz-calc(100% - 193px);
+        height: calc(100% - 193px);
     }
     #got_list {
-        width: 100%;
-        width: -webkit-calc(100% - 193px);
-        width: -moz-calc(100% - 193px);
-        width: calc(100% - 193px);
+        height: 100%;
+        height: -webkit-calc(100% - 193px);
+        height: -moz-calc(100% - 193px);
+        height: calc(100% - 193px);
     }
 </style>
