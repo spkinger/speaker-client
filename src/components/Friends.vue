@@ -41,7 +41,7 @@
         </div>
 
         <!--我发出的申请-->
-        <div id="request_list" v-show="showList === 'request'" style="margin-top: 5px;">
+        <div id="request_list" v-show="showList === 'request'">
             <mescroll-vue ref="mescrollRequestSend" :down="mescrollDownRequestSend" :up="mescrollUpRequestSend" @init="mescrollInitRequestSend">
                 <cell
                     v-for="user in requestSendList"
@@ -57,7 +57,7 @@
             </mescroll-vue>
         </div>
         <!--我收到的申请-->
-        <div id="got_list" v-show="showList === 'request_got'" style="margin-top: 5px;">
+        <div id="got_list" v-show="showList === 'request_got'">
             <mescroll-vue ref="mescrollRequestGot" :down="mescrollDownRequestGot" :up="mescrollUpRequestGot" @init="mescrollInitRequestGot">
                 <cell
                     v-for="user in requestGotList"
