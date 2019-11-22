@@ -160,24 +160,21 @@
     .speaker_hang_up_icon {
         /*animation: heart 0.6s ease-in 0.1s infinite alternate;*/
     }
-
     @keyframes heart{
         from{transform:translate(0,0)}
         to{transform:translate(0,10px)}
     }
-
     .remote_video {
         position: absolute;
-        left: 0;
         top: 0;
-        width: 100%;
+        left: 50%;
         height: 100%;
+        transform: translate(-50%, 0);
     }
     .local_video {
         position: absolute;
         left: 0;
         bottom: 0;
-        width: 30%;
         height: 30%;
     }
     .remote_audio {
