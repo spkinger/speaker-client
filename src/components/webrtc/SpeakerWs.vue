@@ -208,7 +208,7 @@
             // 获取媒体流
             let vx = this;
             try {
-                this.localStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
+                this.localStream = await navigator.mediaDevices.getUserMedia({audio: {echoCancellation: true}, video: true});
                 // 将媒体流加载入对等连接对象
                 this.localStream.getTracks().forEach(track => vx.pc.addTrack(track, vx.localStream));
             } catch (e) {

@@ -8,8 +8,10 @@
                      class="target_avatar"/>
                 <div class="target_name">{{ targetUser.nick_name }}</div>
             </div>
-            <video class="remote_video" :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
-            <video class="local_video" :src-object.prop.camel="localStream" playsinline autoplay muted></video>
+            <video v-bind:class="{min_video: remoteShowMin, full_screen_video: !remoteShowMin}"
+                   :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
+            <video v-bind:class="{min_video: localShowMin, full_screen_video: !localShowMin}"
+                   @click="exchangeVideo" :src-object.prop.camel="localStream" playsinline autoplay muted></video>
             <audio class="remote_audio" :src-object.prop.camel="remoteStream" controls autoplay></audio>
             <div v-if="speakerBtnStatus === 'waitAnswer'" class="speaker_ctl">
                 <img class="speaker_access_icon" @click="callAccess" slot="icon" src="../assets/icon/tel.png" alt="">
@@ -33,11 +35,13 @@
             return {
                 speakerBtnStatus: 'canHangUp', // 等待接听：waitAnswer; 可挂机：canHangUp
                 speakerCtlType: 'sender', // 发起方：sender；接收方：receiver
-                localStream: {},
-                remoteStream: {},
+                localStream: null,
+                remoteStream: null,
                 targetID: 0,
                 targetUser: null,
-                showTargetUser: false
+                showTargetUser: false,
+                localShowMin: true,
+                remoteShowMin: false
             };
         },
         created: async function() {
@@ -97,6 +101,11 @@
                         }
                     }
                 );
+            },
+            // 切换远程和本地视频窗口
+            exchangeVideo: function () {
+                this.localShowMin = !this.localShowMin;
+                this.remoteShowMin = !this.remoteShowMin;
             }
         }
     }
@@ -164,18 +173,18 @@
         from{transform:translate(0,0)}
         to{transform:translate(0,10px)}
     }
-    .remote_video {
+    .full_screen_video {
         position: absolute;
         top: 0;
         left: 50%;
         height: 100%;
         transform: translate(-50%, 0);
     }
-    .local_video {
+    .min_video {
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 30%;
+        height: 20%;
     }
     .remote_audio {
         display: none;
