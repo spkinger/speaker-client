@@ -157,6 +157,7 @@
         left: 17.5%;
         width: 65%;
         text-align: center;
+        z-index: 100;
     }
     .speaker_access_icon {
         float: left;
@@ -179,12 +180,14 @@
         left: 50%;
         height: 100%;
         transform: translate(-50%, 0);
+        z-index: 98;
     }
     .min_video {
         position: absolute;
         left: 0;
         bottom: 0;
         height: 20%;
+        z-index: 99;
     }
     .remote_audio {
         display: none;
