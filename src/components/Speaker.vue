@@ -10,6 +10,7 @@
             </div>
             <video class="remote_video" :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
             <video class="local_video" :src-object.prop.camel="localStream" playsinline autoplay muted></video>
+            <audio class="remote_audio" :src-object.prop.camel="remoteStream" controls autoplay></audio>
             <div v-if="speakerBtnStatus === 'waitAnswer'" class="speaker_ctl">
                 <img class="speaker_access_icon" @click="callAccess" slot="icon" src="../assets/icon/tel.png" alt="">
                 <img class="speaker_refuse_icon" @click="callRefuse" slot="icon" src="../assets/icon/hang_up.png" alt="">
@@ -179,5 +180,8 @@ spe
         bottom: 0;
         width: 30%;
         height: 30%;
+    }
+    .remote_audio {
+        
     }
 </style>
