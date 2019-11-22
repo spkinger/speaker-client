@@ -21,7 +21,6 @@
         </div>
     </div>
 </template>
-spe
 <script>
     import Common from "./Common";
 
@@ -182,6 +181,6 @@ spe
         height: 30%;
     }
     .remote_audio {
-        
+        display: none;
     }
 </style>
