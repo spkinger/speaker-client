@@ -9,7 +9,7 @@
                 <div class="target_name">{{ targetUser.nick_name }}</div>
             </div>
             <video v-bind:class="{min_video: remoteShowMin, full_screen_video: !remoteShowMin}"
-                   :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
+                   @click="exchangeVideo" :src-object.prop.camel="remoteStream" playsinline autoplay muted></video>
             <video v-bind:class="{min_video: localShowMin, full_screen_video: !localShowMin}"
                    @click="exchangeVideo" :src-object.prop.camel="localStream" playsinline autoplay muted></video>
             <audio class="remote_audio" :src-object.prop.camel="remoteStream" controls autoplay></audio>
