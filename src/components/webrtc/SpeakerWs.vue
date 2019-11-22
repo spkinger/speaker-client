@@ -292,6 +292,10 @@
 
         // 收到offer时调用
         onReceiveOffer: async function(target, data) {
+            if (!this.pc) {
+                return;
+            }
+
             // 那到offer设置远程SDP
             try {
                 await this.pc.setRemoteDescription(data);
