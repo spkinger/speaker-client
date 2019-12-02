@@ -5,7 +5,7 @@
         <x-button
             @click.native="loginOut"
             type="primary"
-            style="width: 90%; margin-top: 40%;">
+            style="width: 90%; position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);">
             登出
         </x-button>
         <div v-transfer-dom>

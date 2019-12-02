@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="spk_register">
         <group style="padding-top: 40%;">
             <x-input title="账号" v-model="user_name" type="text" placeholder="仅允许数字、字母、下划线"
                      @on-change="checkUserName" :debounce="100"
@@ -136,5 +136,11 @@
 </script>
 
 <style scoped>
-
+.spk_register{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
+}
 </style>

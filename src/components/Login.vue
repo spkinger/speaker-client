@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="spk_login">
         <group style="padding-top: 40%;">
             <x-input title="账号" v-model="user_name" :max="50" type="text" novalidate :icon-type="nameIconType"
                      @on-blur="checkUserName"
@@ -86,5 +86,11 @@
 </script>
 
 <style scoped>
-
+.spk_login {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0, -50%);
+}
 </style>
