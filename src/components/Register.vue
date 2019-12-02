@@ -1,6 +1,6 @@
 <template>
     <div class="spk_register">
-        <group style="padding-top: 40%;">
+        <group>
             <x-input title="账号" v-model="user_name" type="text" placeholder="仅允许数字、字母、下划线"
                      @on-change="checkUserName" :debounce="100"
                      @on-enter="reg"

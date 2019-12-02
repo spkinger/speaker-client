@@ -1,6 +1,6 @@
 <template>
     <div class="spk_login">
-        <group style="padding-top: 40%;">
+        <group>
             <x-input title="账号" v-model="user_name" :max="50" type="text" novalidate :icon-type="nameIconType"
                      @on-blur="checkUserName"
                      @on-enter="login"></x-input>
